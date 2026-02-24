@@ -12,7 +12,11 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.article variants={gridItem} className="group">
+    <motion.article
+      variants={gridItem}
+      className="group"
+      whileHover={{ y: -4, transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] } }}
+    >
       <Link href={`/projects/${project.slug}`} className="block">
         {/* Image container */}
         <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-900 mb-5">

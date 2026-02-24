@@ -52,6 +52,17 @@ export const staggerContainer: Variants = {
   },
 }
 
+// Grid stagger container — tighter stagger optimised for project grids
+export const gridContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+}
+
 // Stagger item — used as a child of staggerContainer
 export const staggerItem: Variants = {
   hidden: { opacity: 0, y: 24 },

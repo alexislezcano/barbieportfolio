@@ -26,8 +26,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Theme background transitions — applied here to avoid Framer Motion conflicts */
-  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 html,
@@ -61,8 +59,27 @@ body {
 }
 
 /* ----------------------------------------------------------------
-   Smooth border/bg transitions on interactive elements
-   (scoped — does not bleed into Framer Motion)
+   Global theme color transition — always-on, passive, minimal cost.
+   Scoped to color-only properties so it never touches transforms,
+   opacity, or layout — no conflict with Framer Motion.
+
+   Specificity cascade:
+     - Tailwind utility classes (0-1-0) > this rule (0-0-0)
+       → any element with transition-colors / duration-* keeps its own timing.
+     - `a, button` type selector (0-0-1) > this rule (0-0-0)
+       → links and buttons stay fast for hover feedback.
+     - Framer Motion inline styles always override stylesheet rules.
+---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  transition-property: background-color, color, border-color;
+  transition-duration: 700ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* ----------------------------------------------------------------
+   Interactive elements — fast hover feedback (overrides * above)
 ---------------------------------------------------------------- */
 a,
 button {

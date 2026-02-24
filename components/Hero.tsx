@@ -124,7 +124,7 @@ export default function Hero() {
             <motion.div variants={staggerItem}>
               <Link
                 href="#projects"
-                className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-200"
+                className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-[1500ms]"
               >
                 Ver proyectos
                 <ArrowRight />
@@ -139,43 +139,31 @@ export default function Hero() {
             animate="visible"
             className="order-1 md:order-2 flex justify-center md:justify-end"
           >
-            {/* Dark mode portrait — rectangular with shadow */}
+            {/* Unified portrait container — identical dimensions in both themes */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className={`relative w-full overflow-hidden transition-all duration-[1500ms] ${
-                isDark
-                  ? 'max-w-[220px] sm:max-w-[280px] md:max-w-[420px] aspect-[3/4] bg-transparent shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_56px_-12px_rgba(0,0,0,0.18)]'
-                  : 'max-w-[220px] sm:max-w-[280px] md:max-w-[360px] aspect-square rounded-full'
-              }`}
+              className="relative overflow-hidden rounded-full w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[360px] md:h-[360px]"
             >
-              {/* Dark mode image */}
+              {/* Dark mode image — sits on top when dark so it fades IN over the light image */}
               <Image
                 src="/images/profile/barbie-profile.jpg"
                 alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
                 fill
                 priority
-                sizes="(max-width: 768px) 340px, 420px"
-                className={`object-cover object-top transition-opacity duration-[1500ms] ${mounted && !isDark ? 'opacity-0' : 'opacity-100'}`}
+                sizes="(max-width: 768px) 280px, 360px"
+                className={`object-cover object-top transition-opacity duration-[1500ms] ${mounted && !isDark ? 'opacity-0' : 'opacity-100'} ${isDark ? 'z-10' : 'z-0'}`}
               />
 
-              {/* Light mode image — circle, no overlays */}
+              {/* Light mode image — sits on top when light so it fades IN over the dark image */}
               <Image
                 src="/images/barbs-1.png"
                 alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
                 fill
                 priority
                 sizes="(max-width: 768px) 280px, 360px"
-                className={`object-cover transition-opacity duration-[1500ms] ${mounted && isDark ? 'opacity-0' : 'opacity-100'}`}
+                className={`object-cover transition-opacity duration-[1500ms] ${mounted && isDark ? 'opacity-0' : 'opacity-100'} ${!isDark ? 'z-10' : 'z-0'}`}
               />
-
-              {/* Bottom fade — dark mode only */}
-              {isDark && (
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-                  style={{ background: 'linear-gradient(to bottom, transparent, #030303)' }}
-                />
-              )}
             </motion.div>
           </motion.div>
 
