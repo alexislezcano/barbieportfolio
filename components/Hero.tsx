@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -50,6 +51,19 @@ function ArrowRight() {
 }
 
 export default function Hero() {
+  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    setIsDark(document.documentElement.classList.contains('dark'))
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative min-h-screen flex items-center pt-20">
       <Container>
@@ -125,29 +139,43 @@ export default function Hero() {
             animate="visible"
             className="order-1 md:order-2 flex justify-center md:justify-end"
           >
+            {/* Dark mode portrait — rectangular with shadow */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="
-                relative w-full max-w-[220px] sm:max-w-[280px] md:max-w-[420px]
-                aspect-[3/4]
-                overflow-hidden
-                bg-neutral-100 dark:bg-transparent
-                shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]
-                dark:shadow-none
-                hover:shadow-[0_16px_56px_-12px_rgba(0,0,0,0.18)]
-                dark:hover:shadow-none
-                transition-shadow duration-500
-              "
+              className={`relative w-full overflow-hidden transition-all duration-[1500ms] ${
+                isDark
+                  ? 'max-w-[220px] sm:max-w-[280px] md:max-w-[420px] aspect-[3/4] bg-transparent shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_56px_-12px_rgba(0,0,0,0.18)]'
+                  : 'max-w-[220px] sm:max-w-[280px] md:max-w-[360px] aspect-square rounded-full'
+              }`}
             >
+              {/* Dark mode image */}
               <Image
                 src="/images/profile/barbie-profile.jpg"
                 alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
                 fill
                 priority
                 sizes="(max-width: 768px) 340px, 420px"
-                className="object-cover object-top"
+                className={`object-cover object-top transition-opacity duration-[1500ms] ${mounted && !isDark ? 'opacity-0' : 'opacity-100'}`}
               />
+
+              {/* Light mode image — circle, no overlays */}
+              <Image
+                src="/images/barbs-1.png"
+                alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
+                fill
+                priority
+                sizes="(max-width: 768px) 280px, 360px"
+                className={`object-cover transition-opacity duration-[1500ms] ${mounted && isDark ? 'opacity-0' : 'opacity-100'}`}
+              />
+
+              {/* Bottom fade — dark mode only */}
+              {isDark && (
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+                  style={{ background: 'linear-gradient(to bottom, transparent, #030303)' }}
+                />
+              )}
             </motion.div>
           </motion.div>
 

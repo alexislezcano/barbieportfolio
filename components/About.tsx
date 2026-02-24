@@ -39,29 +39,32 @@ export default function About() {
 
           {/* Right — copy + stats */}
           <motion.div variants={staggerItem} className="space-y-8">
-            <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
-              Hola, soy Barbs, una diseñadora gráfica con habilidades en motion graphics y
-              experiencia en dirección de arte. Busco el constante aprendizaje y vivir nuevas
-              experiencias, lo que me permitió desarrollarme en agencias, productoras audiovisuales
-              y empresas de comunicación y publicidad.
-            </p>
-            <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
-              En Conciergency & WeJazz desarrollo piezas animadas y estáticas para redes sociales
-              de marcas de gran alcance como Kinder, Ferrero Rocher y Cosentino. También participo
-              en proyectos creativos como pitch, restylings comunicacionales, presentaciones y
-              campañas 360°.
-            </p>
-            <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
-              En paralelo, colaboro con Arde Agencia Creativa (México) en creación de marcas,
-              branding, diseño web y estrategias digitales. Este camino me llevó a Fuego Creativo,
-              donde me desempeño como Directora de Arte, brindando apoyo a agencias, productoras
-              y empresas.
-            </p>
-            <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
-              Cada proyecto es un desafío donde combino estética visual con funcionalidad para
-              entregar soluciones creativas y efectivas, siempre alineadas a los conceptos y
-              valores de las marcas.
-            </p>
+          <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
+            Hola, soy <strong>Barbs</strong>, una <strong>diseñadora gráfica</strong> con habilidades en <strong>motion graphics</strong> y
+            experiencia en <strong>dirección de arte</strong>. Busco el <strong>constante aprendizaje</strong> y vivir nuevas
+            experiencias, lo que me permitió desarrollarme en <strong>agencias</strong>, <strong>productoras audiovisuales</strong>
+            y <strong>empresas de comunicación y publicidad</strong>.
+          </p>
+
+          <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
+            En <strong>Conciergency & WeJazz</strong> desarrollo <strong>piezas animadas y estáticas</strong> para redes sociales
+            de marcas de gran alcance como <strong>Kinder</strong>, <strong>Ferrero Rocher</strong> y <strong>Cosentino</strong>.
+            También participo en <strong>proyectos creativos</strong> como <strong>pitch</strong>, <strong>restylings comunicacionales</strong>,
+            <strong>presentaciones</strong> y <strong>campañas 360°</strong>.
+          </p>
+
+          <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
+            En paralelo, colaboro con <strong>Arde Agencia Creativa (México)</strong> en <strong>creación de marcas</strong>,
+            <strong>branding</strong>, <strong>diseño web</strong> y <strong>estrategias digitales</strong>. Este camino me llevó a
+            <strong>Fuego Creativo</strong>, donde me desempeño como <strong>Directora de Arte</strong>, brindando apoyo a
+            <strong>agencias</strong>, <strong>productoras</strong> y <strong>empresas</strong>.
+          </p>
+
+          <p className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8]">
+            Cada proyecto es un <strong>desafío</strong> donde combino <strong>estética visual</strong> con <strong>funcionalidad</strong>
+            para entregar <strong>soluciones creativas y efectivas</strong>, siempre alineadas a los
+            <strong>conceptos y valores de las marcas</strong>.
+          </p>
 
             {/* Stats grid */}
             <div className="pt-4 grid grid-cols-2 gap-x-8 gap-y-7 border-t border-neutral-200 dark:border-neutral-800">

@@ -2,13 +2,13 @@ import { Project } from '@/types/project'
 
 export const projects: Project[] = [
   {
-    slug: 'volta-identity',
-    title: 'Volta Identity',
-    category: 'Brand Identity',
+    slug: 'Cosentino City',
+    title: 'Cosentino City',
+    category: 'Social media',
     year: '2024',
-    client: 'Volta Motors',
+    client: 'Cosentino City',
     description:
-      'A comprehensive visual identity for a premium electric vehicle startup redefining sustainable mobility.',
+      'Cosentino City es un espacio para profesionales del diseño y la arquitectura donde pueden inspirarse, conectar y crear. En 2024, Desarrollamos una estrategia única y creativa para presentar los espacios, colores, texturas y materiales que ofrece cada local.',
     fullDescription:
       'Volta approached us with a vision to become the most design-forward electric vehicle company in Europe. The challenge was to craft an identity that communicated technological sophistication while remaining approachable and human. We developed a complete brand system from the ground up — wordmark, iconography, color palette, and motion language — all rooted in the concept of fluid energy. Every decision was made in service of a single idea: that sustainable design and premium craft are not in opposition.',
     services: ['Brand Strategy', 'Visual Identity', 'Typography System', 'Motion Language'],
@@ -23,11 +23,11 @@ export const projects: Project[] = [
     nextProjectSlug: 'meridian-editorial',
   },
   {
-    slug: 'meridian-editorial',
-    title: 'Meridian Editorial',
-    category: 'Editorial Design',
-    year: '2024',
-    client: 'Meridian Magazine',
+    slug: 'carbon studio',
+    title: 'Carbon Studio',
+    category: 'Branding',
+    year: '2023',
+    client: 'Carbon Studio',
     description:
       'A complete editorial redesign for an independent architecture and interiors publication.',
     fullDescription:
@@ -44,11 +44,11 @@ export const projects: Project[] = [
     nextProjectSlug: 'flux-motion',
   },
   {
-    slug: 'flux-motion',
-    title: 'Flux Motion',
+    slug: 'ice cream',
+    title: 'Ice cream | Ferrero Rocher & Raffaello',
     category: 'Motion Design',
-    year: '2023',
-    client: 'Flux Studio',
+    year: '2025',
+    client: 'Ferrero Rocher & Raffaello',
     description:
       'A motion identity system for a creative production studio operating at the edge of film and digital art.',
     fullDescription:
@@ -65,10 +65,10 @@ export const projects: Project[] = [
     nextProjectSlug: 'sage-packaging',
   },
   {
-    slug: 'sage-packaging',
-    title: 'Sage Packaging',
-    category: 'Packaging Design',
-    year: '2023',
+    slug: 'activia',
+    title: 'Activia',
+    category: 'Social Media',
+    year: '2024',
     client: 'Sage Botanicals',
     description:
       'Minimal, tactile packaging for a premium botanical skincare brand focused on slow beauty.',
@@ -86,10 +86,10 @@ export const projects: Project[] = [
     nextProjectSlug: 'noir-campaign',
   },
   {
-    slug: 'noir-campaign',
-    title: 'Noir Campaign',
-    category: 'Art Direction',
-    year: '2023',
+    slug: 'ta-tung',
+    title: 'Winning Pitch | Ta Tung',
+    category: 'Dirección de arte',
+    year: '2024',
     client: 'Noir Fragrance',
     description:
       'Art direction for a cinematic fragrance campaign exploring duality, tension, and desire.',
@@ -107,9 +107,9 @@ export const projects: Project[] = [
     nextProjectSlug: 'arch-poster',
   },
   {
-    slug: 'arch-poster',
-    title: 'Arch Poster Series',
-    category: 'Print Design',
+    slug: 'kinder-bueno',
+    title: 'Kinder Bueno',
+    category: 'Social Media',
     year: '2022',
     client: 'Arch Gallery',
     description:
