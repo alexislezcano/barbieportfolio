@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
+import { ScrollProgress } from './ui/scroll-progress'
 
 const navLinks = [
   { label: 'Trabajos', href: '/#projects' },
@@ -31,7 +32,7 @@ export default function Navbar() {
       className={[
         'fixed top-0 left-0 right-0 z-50',
         scrolled
-          ? 'bg-neutral-50/90 dark:bg-dark-bg/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800/80'
+          ? 'bg-neutral-50/90 dark:bg-dark-bg/90 backdrop-blur-sm'
           : 'bg-transparent',
       ].join(' ')}
     >
@@ -60,6 +61,16 @@ export default function Navbar() {
           </nav>
         </div>
       </Container>
+
+      {/* Separator — replaces the old border-b, sits above the progress bar */}
+      <div
+        className={`h-px bg-neutral-200 dark:bg-neutral-800 transition-opacity duration-300 ${
+          scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+
+      {/* Scroll progress — full width, 2px, tracks window scroll */}
+      <ScrollProgress className="h-0.5 bg-gradient-to-r from-transparent to-neutral-900 dark:to-neutral-100 pointer-events-none" />
     </motion.header>
   )
 }
