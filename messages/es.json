@@ -32,6 +32,9 @@
     "statsAvailabilityLabel": "Disponibilidad",
     "statsAvailabilityValue": "2026"
   },
+  "Tools": {
+    "label": "Herramientas"
+  },
   "Contact": {
     "label": "Contacto",
     "heading": "¿Trabajamos juntos?",

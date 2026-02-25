@@ -32,6 +32,9 @@
     "statsAvailabilityLabel": "Availability",
     "statsAvailabilityValue": "2026"
   },
+  "Tools": {
+    "label": "Tools"
+  },
   "Contact": {
     "label": "Contact",
     "heading": "Let's work together?",

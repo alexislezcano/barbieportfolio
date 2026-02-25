@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server'
 import Hero from '@/components/Hero'
 import ProjectGrid from '@/components/ProjectGrid'
+import ToolsInfiniteSlider from '@/components/ToolsInfiniteSlider'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import { getAllProjects } from '@/lib/projects'
@@ -18,6 +19,7 @@ export default async function HomePage({
     <>
       <Hero />
       <ProjectGrid projects={projects} />
+      <ToolsInfiniteSlider />
       <About />
       <Contact />
     </>
