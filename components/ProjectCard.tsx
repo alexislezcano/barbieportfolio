@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         */}
         <div
           data-gsap-img-container
-          className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-900 mb-5"
+          className="relative aspect-[4/3] overflow-hidden bg-neutral-700 dark:bg-neutral-900 mb-5"
         >
           {/*
             data-gsap-parallax → GSAP Part 4: y parallax + scale 1.12 (headroom)
@@ -62,14 +62,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Meta */}
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1 group-hover:opacity-50 transition-opacity duration-300">
+            <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-600 mb-1 group-hover:opacity-50 transition-opacity duration-300">
               {project.title}
             </h3>
-            <p className="text-xs tracking-wide text-neutral-400 dark:text-neutral-600">
+            <p className="text-xs tracking-wide text-neutral-600 dark:text-neutral-600">
               {project.category}
             </p>
           </div>
-          <span className="text-xs text-neutral-300 dark:text-neutral-700 mt-0.5 shrink-0">
+          <span className="text-xs text-neutral-600 dark:text-neutral-700 mt-0.5 shrink-0">
             {project.year}
           </span>
         </div>

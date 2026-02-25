@@ -160,7 +160,7 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
                   delay: i * 0.08,
                 }}
                 className={[
-                  'relative overflow-hidden bg-neutral-100 dark:bg-neutral-900',
+                  'relative overflow-hidden bg-red-100 dark:bg-neutral-900',
                   i === 0 ? 'md:col-span-2 aspect-video' : 'aspect-square',
                 ].join(' ')}
               >

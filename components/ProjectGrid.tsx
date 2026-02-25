@@ -136,7 +136,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
           <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600">
             {t('label')}
           </p>
-          <span className="text-xs text-neutral-300 dark:text-neutral-700 tabular-nums">
+          <span className="text-xs text-neutral-400 dark:text-neutral-700 tabular-nums">
             {String(projects.length).padStart(2, '0')}
           </span>
         </motion.div>
