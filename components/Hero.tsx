@@ -4,12 +4,36 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import type { Transition, Variants } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Container from './Container'
 import { TextEffect } from './ui/text-effect'
-import { staggerContainer, staggerItem } from '@/lib/motion'
 
-const EASE_EDITORIAL = [0.25, 0.46, 0.45, 0.94] as const
+const EASE_EDITORIAL = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
+
+// Shared transition applied to each animated segment
+const SEGMENT_TRANSITION: Transition = { duration: 0.4, ease: EASE_EDITORIAL }
+
+// 1️⃣ Title characters — blur + soft lift, premium reveal
+const titleItemVariants: Variants = {
+  hidden: { opacity: 0, y: 10, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  exit:   { opacity: 0, y: 10, filter: 'blur(6px)' },
+}
+
+// 2️⃣ Role words — subtle lift only, no blur
+const rolesItemVariants: Variants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: { opacity: 1, y: 0 },
+  exit:   { opacity: 0, y: 6 },
+}
+
+// 3️⃣ Tagline words — micro-blur + lift, softest motion
+const taglineItemVariants: Variants = {
+  hidden: { opacity: 0, y: 8, filter: 'blur(3px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  exit:   { opacity: 0, y: 8, filter: 'blur(3px)' },
+}
 
 const portraitVariant = {
   hidden: {
@@ -58,8 +82,6 @@ export default function Hero() {
   const [animKey, setAnimKey] = useState(0)
   const t = useTranslations('Hero')
 
-  const roles = [t('role1'), t('role2'), t('role3')]
-
   useEffect(() => {
     setMounted(true)
     setIsDark(document.documentElement.classList.contains('dark'))
@@ -90,32 +112,31 @@ export default function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center py-10 md:py-28">
 
           {/* Left — text content */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="order-2 md:order-1"
-          >
-            {/* Label */}
+          <div className="order-2 md:order-1">
+
+            {/* Label — instant fade, no delay */}
             <motion.p
-              variants={staggerItem}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-6 md:mb-10"
             >
               {t('label')}
             </motion.p>
 
             {/*
-              Name — plain <h1>; TextEffect controls each line's per-character
-              fade independently. animKey forces re-trigger on theme switch.
+              1️⃣ Main Title — per character, blur + lift.
+              animKey forces full re-play on theme switch.
             */}
             <h1 className="text-[clamp(3.2rem,8vw,7rem)] font-light tracking-tight text-neutral-900 dark:text-neutral-100 leading-[0.92] mb-8">
               <TextEffect
                 key={`barbs-${animKey}`}
                 per="char"
-                preset="fade"
                 as="span"
                 delay={0.1}
-                speedReveal={1.2}
+                speedReveal={1.8}
+                segmentTransition={SEGMENT_TRANSITION}
+                variants={{ item: titleItemVariants }}
                 className="block"
               >
                 Barbs
@@ -123,44 +144,58 @@ export default function Hero() {
               <TextEffect
                 key={`corbelleri-${animKey}`}
                 per="char"
-                preset="fade"
                 as="span"
-                delay={0.3}
-                speedReveal={1.2}
+                delay={0.35}
+                speedReveal={1.4}
+                segmentTransition={SEGMENT_TRANSITION}
+                variants={{ item: titleItemVariants }}
                 className="block"
               >
                 Corbelleri
               </TextEffect>
             </h1>
 
-            {/* Roles */}
-            <motion.div
-              variants={staggerItem}
-              className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-7 md:mb-10"
+            {/*
+              2️⃣ Subtitle — per word, gentle lift.
+              Roles joined into one string so TextEffect
+              can stagger each word uniformly.
+            */}
+            <TextEffect
+              key={`roles-${animKey}`}
+              per="word"
+              as="p"
+              delay={0.9}
+              speedReveal={1.6}
+              segmentTransition={SEGMENT_TRANSITION}
+              variants={{ item: rolesItemVariants }}
+              className="text-sm text-neutral-500 dark:text-neutral-500 tracking-wide mb-7 md:mb-10"
             >
-              {roles.map((role, i) => (
-                <span
-                  key={role}
-                  className="text-sm text-neutral-500 dark:text-neutral-500 tracking-wide"
-                >
-                  {role}
-                  {i < roles.length - 1 && (
-                    <span className="ml-3 text-neutral-300 dark:text-neutral-700">·</span>
-                  )}
-                </span>
-              ))}
-            </motion.div>
+              {`${t('role1')} · ${t('role2')} · ${t('role3')}`}
+            </TextEffect>
 
-            {/* Tagline */}
-            <motion.p
-              variants={staggerItem}
+            {/*
+              3️⃣ Description — per word, micro-blur + lift.
+              Softest motion in the hierarchy.
+            */}
+            <TextEffect
+              key={`tagline-${animKey}`}
+              per="word"
+              as="p"
+              delay={1.8}
+              speedReveal={1.2}
+              segmentTransition={SEGMENT_TRANSITION}
+              variants={{ item: taglineItemVariants }}
               className="text-base md:text-xl font-light text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed mb-10 md:mb-14"
             >
               {t('tagline')}
-            </motion.p>
+            </TextEffect>
 
-            {/* CTA */}
-            <motion.div variants={staggerItem}>
+            {/* CTA — enters after the full cascade settles */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.8, duration: 0.6, ease: EASE_EDITORIAL }}
+            >
               <Link
                 href="#projects"
                 onClick={(e) => {
@@ -177,7 +212,7 @@ export default function Hero() {
                 <ArrowRight />
               </Link>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Right — portrait */}
           <motion.div
