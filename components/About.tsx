@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Container from './Container'
+import { TextEffect } from './ui/text-effect'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 
 const stats = [
@@ -32,9 +33,16 @@ export default function About() {
             <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-6 md:mb-10">
               Acerca de mí
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-900 dark:text-neutral-100 leading-tight">
+            <TextEffect
+              as="h2"
+              per="char"
+              preset="fade"
+              trigger={isInView}
+              speedReveal={1.2}
+              className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-900 dark:text-neutral-100 leading-tight"
+            >
               Diseño, movimiento y dirección de arte.
-            </h2>
+            </TextEffect>
           </motion.div>
 
           {/* Right — copy + stats */}

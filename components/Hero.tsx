@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Container from './Container'
+import { TextEffect } from './ui/text-effect'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 
 const roles = ['Diseñadora Gráfica', 'Motion Graphics', 'Dirección de Arte']
@@ -53,15 +54,25 @@ function ArrowRight() {
 export default function Hero() {
   const [isDark, setIsDark] = useState(false)
   const [mounted, setMounted] = useState(false)
+  // Increments on each theme toggle to re-trigger TextEffect
+  const [animKey, setAnimKey] = useState(0)
 
   useEffect(() => {
     setMounted(true)
     setIsDark(document.documentElement.classList.contains('dark'))
+
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains('dark'))
+      setAnimKey((k) => k + 1)
     })
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    return () => observer.disconnect()
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -84,15 +95,34 @@ export default function Hero() {
               Portfolio — 2026
             </motion.p>
 
-            {/* Name */}
-            <motion.h1
-              variants={staggerItem}
-              className="text-[clamp(3.2rem,8vw,7rem)] font-light tracking-tight text-neutral-900 dark:text-neutral-100 leading-[0.92] mb-8"
-            >
-              Barbs
-              <br />
-              Corbelleri
-            </motion.h1>
+            {/*
+              Name — plain <h1>; TextEffect controls each line's per-character
+              fade independently. animKey forces re-trigger on theme switch.
+            */}
+            <h1 className="text-[clamp(3.2rem,8vw,7rem)] font-light tracking-tight text-neutral-900 dark:text-neutral-100 leading-[0.92] mb-8">
+              <TextEffect
+                key={`barbs-${animKey}`}
+                per="char"
+                preset="fade"
+                as="span"
+                delay={0.1}
+                speedReveal={1.2}
+                className="block"
+              >
+                Barbs
+              </TextEffect>
+              <TextEffect
+                key={`corbelleri-${animKey}`}
+                per="char"
+                preset="fade"
+                as="span"
+                delay={0.3}
+                speedReveal={1.2}
+                className="block"
+              >
+                Corbelleri
+              </TextEffect>
+            </h1>
 
             {/* Roles */}
             <motion.div
@@ -124,7 +154,7 @@ export default function Hero() {
             <motion.div variants={staggerItem}>
               <Link
                 href="#projects"
-                className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-[1500ms]"
+                className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-200"
               >
                 Ver proyectos
                 <ArrowRight />
@@ -139,30 +169,35 @@ export default function Hero() {
             animate="visible"
             className="order-1 md:order-2 flex justify-center md:justify-end"
           >
-            {/* Unified portrait container — identical dimensions in both themes */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className="relative overflow-hidden rounded-full w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[360px] md:h-[360px]"
             >
-              {/* Dark mode image — sits on top when dark so it fades IN over the light image */}
+              {/* Dark mode image */}
               <Image
                 src="/images/profile/barbie-profile.jpg"
                 alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
                 fill
                 priority
-                sizes="(max-width: 768px) 280px, 360px"
-                className={`object-cover object-top transition-opacity duration-[1500ms] ${mounted && !isDark ? 'opacity-0' : 'opacity-100'} ${isDark ? 'z-10' : 'z-0'}`}
+                sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, 360px"
+                className={`object-cover object-top transition-opacity duration-[1500ms] ${
+                  mounted && !isDark ? 'opacity-0' : 'opacity-100'
+                }`}
+                style={{ position: 'absolute', zIndex: isDark ? 1 : 0 }}
               />
 
-              {/* Light mode image — sits on top when light so it fades IN over the dark image */}
+              {/* Light mode image */}
               <Image
-                src="/images/barbs-1.png"
+                src="/images/profile/barbie-profile.png"
                 alt="Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte"
                 fill
                 priority
-                sizes="(max-width: 768px) 280px, 360px"
-                className={`object-cover transition-opacity duration-[1500ms] ${mounted && isDark ? 'opacity-0' : 'opacity-100'} ${!isDark ? 'z-10' : 'z-0'}`}
+                sizes="(max-width: 640px) 220px, (max-width: 768px) 280px, 360px"
+                className={`object-cover transition-opacity duration-[1500ms] ${
+                  mounted && isDark ? 'opacity-0' : 'opacity-100'
+                }`}
+                style={{ position: 'absolute', zIndex: isDark ? 0 : 1 }}
               />
             </motion.div>
           </motion.div>
