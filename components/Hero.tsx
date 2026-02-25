@@ -229,13 +229,13 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
-        <span className="text-[10px] tracking-widest uppercase text-neutral-300 dark:text-neutral-700">
+        <span className="text-[10px] tracking-widest uppercase text-neutral-500 dark:text-neutral-500">
           {t('scrollDown')}
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-px h-8 bg-gradient-to-b from-neutral-400 to-transparent dark:from-neutral-600"
+          className="w-px h-8 bg-gradient-to-b from-neutral-500 to-transparent dark:from-neutral-500"
         />
       </motion.div>
     </section>

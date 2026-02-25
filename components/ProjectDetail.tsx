@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import Container from './Container'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 import type { Project } from '@/types/project'
