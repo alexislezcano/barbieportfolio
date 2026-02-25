@@ -53,7 +53,8 @@ function ArrowRight() {
 export default function Hero() {
   const [isDark, setIsDark] = useState(false)
   const [mounted, setMounted] = useState(false)
-  // Increments on each theme toggle to re-trigger TextEffect
+  // Increments after the user settles on a theme to re-trigger TextEffect.
+  // Debounced so rapid toggling only fires one animation after the last click.
   const [animKey, setAnimKey] = useState(0)
   const t = useTranslations('Hero')
 
@@ -63,9 +64,14 @@ export default function Hero() {
     setMounted(true)
     setIsDark(document.documentElement.classList.contains('dark'))
 
+    let debounceTimer: ReturnType<typeof setTimeout>
+
     const observer = new MutationObserver(() => {
+      // Always sync image crossfade immediately
       setIsDark(document.documentElement.classList.contains('dark'))
-      setAnimKey((k) => k + 1)
+      // Debounce the TextEffect re-trigger — only fires once the user stops toggling
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(() => setAnimKey((k) => k + 1), 350)
     })
     observer.observe(document.documentElement, {
       attributes: true,
@@ -74,6 +80,7 @@ export default function Hero() {
 
     return () => {
       observer.disconnect()
+      clearTimeout(debounceTimer)
     }
   }, [])
 

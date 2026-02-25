@@ -62,10 +62,11 @@ export default function ThemeToggle() {
   }, [])
 
   const toggle = () => {
-    const next = !isDark
-    setIsDark(next)
-    document.documentElement.classList.toggle('dark', next)
-    localStorage.setItem('theme', next ? 'dark' : 'light')
+    // classList.toggle() without a force-value reads the *current* DOM state
+    // atomically and returns the new state — eliminates stale-closure races.
+    const isDarkNow = document.documentElement.classList.toggle('dark')
+    localStorage.setItem('theme', isDarkNow ? 'dark' : 'light')
+    setIsDark(isDarkNow)
   }
 
   // Render an invisible placeholder during SSR to avoid layout shift
