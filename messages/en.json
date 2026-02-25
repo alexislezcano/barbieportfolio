@@ -1,0 +1,60 @@
+{
+  "Navbar": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "label": "Portfolio — 2026",
+    "role1": "Graphic Designer",
+    "role2": "Motion Graphics",
+    "role3": "Art Direction",
+    "tagline": "I design visual experiences that blend aesthetics, strategy and motion.",
+    "cta": "View projects",
+    "scrollDown": "Scroll down"
+  },
+  "ProjectGrid": {
+    "label": "Selected projects"
+  },
+  "About": {
+    "label": "About me",
+    "heading": "Design, motion and art direction.",
+    "bio1": "Hi, I'm <b>Barbs</b>, a <b>graphic designer</b> with skills in <b>motion graphics</b> and experience in <b>art direction</b>. I'm driven by <b>continuous learning</b> and new experiences, which allowed me to grow within <b>agencies</b>, <b>audiovisual production companies</b> and <b>communication and advertising firms</b>.",
+    "bio2": "At <b>Conciergency & WeJazz</b> I develop <b>animated and static pieces</b> for social media of high-reach brands like <b>Kinder</b>, <b>Ferrero Rocher</b> and <b>Cosentino</b>. I also take part in <b>creative projects</b> such as <b>pitches</b>, <b>communication restylings</b>, <b>presentations</b> and <b>360° campaigns</b>.",
+    "bio3": "In parallel, I collaborate with <b>Arde Agencia Creativa (Mexico)</b> on <b>brand creation</b>, <b>branding</b>, <b>web design</b> and <b>digital strategies</b>. This path led me to <b>Fuego Creativo</b>, where I serve as <b>Art Director</b>, providing support to <b>agencies</b>, <b>production companies</b> and <b>businesses</b>.",
+    "bio4": "Every project is a <b>challenge</b> where I combine <b>visual aesthetics</b> with <b>functionality</b> to deliver <b>creative and effective solutions</b>, always aligned with the <b>concepts and values of the brands</b>.",
+    "statsLocationLabel": "Based in",
+    "statsLocationValue": "Argentina",
+    "statsSpecialtyLabel": "Specialty",
+    "statsSpecialtyValue": "Motion Graphics",
+    "statsRoleLabel": "Current role",
+    "statsRoleValue": "Art Director",
+    "statsAvailabilityLabel": "Availability",
+    "statsAvailabilityValue": "2026"
+  },
+  "Contact": {
+    "label": "Contact",
+    "heading": "Let's work together?",
+    "body": "If you'd like to collaborate on your next project or explore creative ideas together, feel free to reach out."
+  },
+  "Footer": {
+    "copyright": "© {year} Barbs Corbelleri. All rights reserved.",
+    "role": "Graphic Designer & Art Director"
+  },
+  "ProjectDetail": {
+    "client": "Client",
+    "year": "Year",
+    "category": "Category",
+    "services": "Services",
+    "process": "Process",
+    "approach": "Approach & Thinking",
+    "result": "Result",
+    "allProjects": "All Projects",
+    "nextProject": "Next Project"
+  },
+  "Metadata": {
+    "title": "Barbs Corbelleri — Graphic Designer & Art Director",
+    "description": "Graphic designer specialized in motion graphics and art direction. Creating visual pieces with aesthetics, strategy and movement.",
+    "titleTemplate": "%s — Barbs Corbelleri"
+  }
+}

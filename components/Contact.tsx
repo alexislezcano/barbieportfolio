@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import Container from './Container'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 
@@ -15,6 +16,7 @@ const socialLinks = [
 export default function Contact() {
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const t = useTranslations('Contact')
 
   return (
     <motion.section
@@ -32,7 +34,7 @@ export default function Contact() {
             variants={staggerItem}
             className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-6 md:mb-10"
           >
-            Contacto
+            {t('label')}
           </motion.p>
 
           {/* Closing statement */}
@@ -40,7 +42,7 @@ export default function Contact() {
             variants={staggerItem}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-neutral-900 dark:text-neutral-100 leading-[1.1] tracking-tight mb-8 md:mb-12"
           >
-            ¿Trabajamos juntos?
+            {t('heading')}
           </motion.h2>
 
           {/* Intro text */}
@@ -48,8 +50,7 @@ export default function Contact() {
             variants={staggerItem}
             className="text-base font-light text-neutral-600 dark:text-neutral-400 leading-[1.8] max-w-lg mb-10"
           >
-            Si querés que trabajemos en tu próximo proyecto o colaborar en ideas creativas,
-            podés escribirme.
+            {t('body')}
           </motion.p>
 
           {/* Email */}

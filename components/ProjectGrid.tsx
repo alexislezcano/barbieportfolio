@@ -2,6 +2,7 @@
 
 import { useRef, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Container from './Container'
@@ -16,6 +17,7 @@ interface ProjectGridProps {
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
   const sectionRef = useRef<HTMLElement>(null)
+  const t = useTranslations('ProjectGrid')
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return
@@ -132,7 +134,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
           transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
         >
           <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600">
-            Proyectos seleccionados
+            {t('label')}
           </p>
           <span className="text-xs text-neutral-300 dark:text-neutral-700 tabular-nums">
             {String(projects.length).padStart(2, '0')}

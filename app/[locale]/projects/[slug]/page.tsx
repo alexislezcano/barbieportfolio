@@ -1,18 +1,20 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 import { getProjectBySlug, getNextProject, getAllProjects } from '@/lib/projects'
 import ProjectDetail from '@/components/ProjectDetail'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ locale: string; slug: string }>
 }
 
 export function generateStaticParams() {
   return getAllProjects().map((p) => ({ slug: p.slug }))
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const project = getProjectBySlug(params.slug)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
   if (!project) return {}
   return {
     title: project.title,
@@ -20,14 +22,16 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = getProjectBySlug(params.slug)
+export default async function ProjectPage({ params }: Props) {
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     notFound()
   }
 
-  const nextProject = getNextProject(params.slug)
+  const nextProject = getNextProject(slug)
 
   return <ProjectDetail project={project} nextProject={nextProject} />
 }

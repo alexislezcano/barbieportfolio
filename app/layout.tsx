@@ -1,8 +1,6 @@
-import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import { Inter, DM_Sans } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,29 +15,22 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte',
-    template: '%s — Barbs Corbelleri',
-  },
-  description:
-    'Diseñadora gráfica especializada en motion graphics y dirección de arte. Creando piezas visuales con estética, estrategia y movimiento.',
-  openGraph: {
-    title: 'Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte',
-    description:
-      'Diseñadora gráfica especializada en motion graphics y dirección de arte. Creando piezas visuales con estética, estrategia y movimiento.',
-    type: 'website',
-  },
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+/**
+ * Root layout — the <html> and <body> elements live here.
+ * This component is PERMANENT and never re-renders during client-side navigation.
+ * That guarantees React never reconciles (and therefore never clears) the `class`
+ * attribute we add to <html> with the anti-flicker theme script or ThemeToggle.
+ *
+ * The `lang` attribute is set synchronously by LocaleLangSyncer (a child client
+ * component in the locale layout) so it always reflects the active locale.
+ */
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         {/*
-          Anti-flicker theme script.
-          Runs synchronously before React hydration to apply the correct
-          dark/light class based on localStorage or system preference.
+          Anti-flicker theme script — runs synchronously before React hydration
+          to apply the correct dark/light class from localStorage or system preference.
         */}
         <script
           dangerouslySetInnerHTML={{
@@ -50,9 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${inter.variable} ${dmSans.variable} font-sans bg-neutral-50 dark:bg-dark-bg text-neutral-900 dark:text-neutral-100 antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   )

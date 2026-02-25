@@ -2,21 +2,22 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import Container from './Container'
 import ThemeToggle from './ThemeToggle'
+import LanguageSwitcher from './LanguageSwitcher'
 import { ScrollProgress } from './ui/scroll-progress'
-
-const navLinks = [
-  { label: 'Trabajos', href: '/#projects' },
-  { label: 'Sobre mí', href: '/#about' },
-  { label: 'Contacto', href: '/#contact' },
-]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname()
+  const t = useTranslations('Navbar')
+
+  const navLinks = [
+    { label: t('work'), href: '/#projects' },
+    { label: t('about'), href: '/#about' },
+    { label: t('contact'), href: '/#contact' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -46,7 +47,7 @@ export default function Navbar() {
             Bárbara Corb
           </Link>
 
-          {/* Nav links + toggle */}
+          {/* Nav links + switchers */}
           <nav className="flex items-center gap-7 md:gap-9">
             {navLinks.map(({ label, href }) => (
               <Link
@@ -57,12 +58,13 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
+            <LanguageSwitcher />
             <ThemeToggle />
           </nav>
         </div>
       </Container>
 
-      {/* Separator — replaces the old border-b, sits above the progress bar */}
+      {/* Separator — visible only when scrolled */}
       <div
         className={`h-px bg-neutral-200 dark:bg-neutral-800 transition-opacity duration-300 ${
           scrolled ? 'opacity-100' : 'opacity-0'

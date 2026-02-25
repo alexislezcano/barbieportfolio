@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import Container from './Container'
 import { TextEffect } from './ui/text-effect'
 import { staggerContainer, staggerItem } from '@/lib/motion'
-
-const roles = ['Diseñadora Gráfica', 'Motion Graphics', 'Dirección de Arte']
 
 const EASE_EDITORIAL = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -56,6 +55,9 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   // Increments on each theme toggle to re-trigger TextEffect
   const [animKey, setAnimKey] = useState(0)
+  const t = useTranslations('Hero')
+
+  const roles = [t('role1'), t('role2'), t('role3')]
 
   useEffect(() => {
     setMounted(true)
@@ -92,7 +94,7 @@ export default function Hero() {
               variants={staggerItem}
               className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-6 md:mb-10"
             >
-              Portfolio — 2026
+              {t('label')}
             </motion.p>
 
             {/*
@@ -147,7 +149,7 @@ export default function Hero() {
               variants={staggerItem}
               className="text-base md:text-xl font-light text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed mb-10 md:mb-14"
             >
-              Diseño experiencias visuales que combinan estética, estrategia y movimiento.
+              {t('tagline')}
             </motion.p>
 
             {/* CTA */}
@@ -164,7 +166,7 @@ export default function Hero() {
                 }}
                 className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-200"
               >
-                Ver proyectos
+                {t('cta')}
                 <ArrowRight />
               </Link>
             </motion.div>
@@ -221,7 +223,7 @@ export default function Hero() {
         className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
         <span className="text-[10px] tracking-widest uppercase text-neutral-300 dark:text-neutral-700">
-        Deslizar hacia abajo
+          {t('scrollDown')}
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}

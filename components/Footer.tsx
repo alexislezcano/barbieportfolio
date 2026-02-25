@@ -1,6 +1,8 @@
+import { getTranslations } from 'next-intl/server'
 import Container from './Container'
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations('Footer')
   const year = new Date().getFullYear()
 
   return (
@@ -8,10 +10,10 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-neutral-400 dark:text-neutral-600">
-            © {year} Barbs Corbelleri. Todos los derechos reservados.
+            {t('copyright', { year })}
           </p>
           <p className="text-xs text-neutral-400 dark:text-neutral-600">
-            Diseñadora Gráfica & Directora de Arte
+            {t('role')}
           </p>
         </div>
       </Container>

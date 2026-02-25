@@ -1,0 +1,60 @@
+{
+  "Navbar": {
+    "work": "Trabajos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "label": "Portfolio — 2026",
+    "role1": "Diseñadora Gráfica",
+    "role2": "Motion Graphics",
+    "role3": "Dirección de Arte",
+    "tagline": "Diseño experiencias visuales que combinan estética, estrategia y movimiento.",
+    "cta": "Ver proyectos",
+    "scrollDown": "Deslizar hacia abajo"
+  },
+  "ProjectGrid": {
+    "label": "Proyectos seleccionados"
+  },
+  "About": {
+    "label": "Acerca de mí",
+    "heading": "Diseño, movimiento y dirección de arte.",
+    "bio1": "Hola, soy <b>Barbs</b>, una <b>diseñadora gráfica</b> con habilidades en <b>motion graphics</b> y experiencia en <b>dirección de arte</b>. Busco el <b>constante aprendizaje</b> y vivir nuevas experiencias, lo que me permitió desarrollarme en <b>agencias</b>, <b>productoras audiovisuales</b> y <b>empresas de comunicación y publicidad</b>.",
+    "bio2": "En <b>Conciergency & WeJazz</b> desarrollo <b>piezas animadas y estáticas</b> para redes sociales de marcas de gran alcance como <b>Kinder</b>, <b>Ferrero Rocher</b> y <b>Cosentino</b>. También participo en <b>proyectos creativos</b> como <b>pitch</b>, <b>restylings comunicacionales</b>, <b>presentaciones</b> y <b>campañas 360°</b>.",
+    "bio3": "En paralelo, colaboro con <b>Arde Agencia Creativa (México)</b> en <b>creación de marcas</b>, <b>branding</b>, <b>diseño web</b> y <b>estrategias digitales</b>. Este camino me llevó a <b>Fuego Creativo</b>, donde me desempeño como <b>Directora de Arte</b>, brindando apoyo a <b>agencias</b>, <b>productoras</b> y <b>empresas</b>.",
+    "bio4": "Cada proyecto es un <b>desafío</b> donde combino <b>estética visual</b> con <b>funcionalidad</b> para entregar <b>soluciones creativas y efectivas</b>, siempre alineadas a los <b>conceptos y valores de las marcas</b>.",
+    "statsLocationLabel": "Ubicada en",
+    "statsLocationValue": "Argentina",
+    "statsSpecialtyLabel": "Especialidad",
+    "statsSpecialtyValue": "Motion Graphics",
+    "statsRoleLabel": "Rol actual",
+    "statsRoleValue": "Directora de Arte",
+    "statsAvailabilityLabel": "Disponibilidad",
+    "statsAvailabilityValue": "2026"
+  },
+  "Contact": {
+    "label": "Contacto",
+    "heading": "¿Trabajamos juntos?",
+    "body": "Si querés que trabajemos en tu próximo proyecto o colaborar en ideas creativas, podés escribirme."
+  },
+  "Footer": {
+    "copyright": "© {year} Barbs Corbelleri. Todos los derechos reservados.",
+    "role": "Diseñadora Gráfica & Directora de Arte"
+  },
+  "ProjectDetail": {
+    "client": "Cliente",
+    "year": "Año",
+    "category": "Categoría",
+    "services": "Servicios",
+    "process": "Proceso",
+    "approach": "Enfoque & Pensamiento",
+    "result": "Resultado",
+    "allProjects": "Todos los proyectos",
+    "nextProject": "Siguiente proyecto"
+  },
+  "Metadata": {
+    "title": "Barbs Corbelleri — Diseñadora Gráfica & Directora de Arte",
+    "description": "Diseñadora gráfica especializada en motion graphics y dirección de arte. Creando piezas visuales con estética, estrategia y movimiento.",
+    "titleTemplate": "%s — Barbs Corbelleri"
+  }
+}

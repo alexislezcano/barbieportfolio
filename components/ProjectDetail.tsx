@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import Container from './Container'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 import type { Project } from '@/types/project'
@@ -33,6 +34,8 @@ function ArrowRight({ className = '' }: { className?: string }) {
 }
 
 export default function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
+  const t = useTranslations('ProjectDetail')
+
   return (
     <>
       {/* ── Hero ───────────────────────────────────────────────── */}
@@ -92,10 +95,10 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: 'Client', value: project.client },
-              { label: 'Year', value: project.year },
-              { label: 'Category', value: project.category },
-              { label: 'Services', value: project.services.join(', ') },
+              { label: t('client'), value: project.client },
+              { label: t('year'), value: project.year },
+              { label: t('category'), value: project.category },
+              { label: t('services'), value: project.services.join(', ') },
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-[10px] font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-2">
@@ -121,10 +124,10 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-6">
-                Process
+                {t('process')}
               </p>
               <h2 className="text-3xl md:text-4xl font-light text-neutral-900 dark:text-neutral-100 leading-tight">
-                Approach & Thinking
+                {t('approach')}
               </h2>
             </motion.div>
 
@@ -185,7 +188,7 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
             className="max-w-2xl"
           >
             <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-8">
-              Result
+              {t('result')}
             </p>
             <p className="text-2xl md:text-3xl font-light text-neutral-900 dark:text-neutral-100 leading-relaxed">
               {project.outcome}
@@ -206,7 +209,7 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
               <span className="rotate-180 inline-block">
                 <ArrowRight />
               </span>
-              All Projects
+              {t('allProjects')}
             </Link>
 
             {/* Next project */}
@@ -217,7 +220,7 @@ export default function ProjectDetail({ project, nextProject }: ProjectDetailPro
               >
                 <div>
                   <p className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600 mb-2">
-                    Next Project
+                    {t('nextProject')}
                   </p>
                   <h3 className="text-xl md:text-2xl font-light text-neutral-900 dark:text-neutral-100 group-hover:opacity-50">
                     {nextProject.title}
