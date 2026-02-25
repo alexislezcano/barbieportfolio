@@ -154,6 +154,14 @@ export default function Hero() {
             <motion.div variants={staggerItem}>
               <Link
                 href="#projects"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const target = document.getElementById('projects')
+                  if (!target) return
+                  // Subtract header height (h-20 = 80px + 3px border/progress)
+                  const top = target.getBoundingClientRect().top + window.scrollY - 83
+                  window.scrollTo({ top, behavior: 'smooth' })
+                }}
                 className="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900 text-xs font-medium tracking-widest uppercase hover:opacity-75 transition-opacity duration-200"
               >
                 Ver proyectos

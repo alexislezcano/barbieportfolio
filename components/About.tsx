@@ -7,7 +7,7 @@ import { TextEffect } from './ui/text-effect'
 import { staggerContainer, staggerItem } from '@/lib/motion'
 
 const stats = [
-  { label: 'Basada en', value: 'Argentina' },
+  { label: 'Ubicada en', value: 'Argentina' },
   { label: 'Especialidad', value: 'Motion Graphics' },
   { label: 'Rol actual', value: 'Directora de Arte' },
   { label: 'Disponibilidad', value: '2026' },
